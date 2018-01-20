@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    Beverage.cpp
+    Beverage.cpp \
+    CondimentDecorator.cpp
 
 HEADERS += \
-    Beverage.h
+    Beverage.h \
+    CondimentDecorator.h
