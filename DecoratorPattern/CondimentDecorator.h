@@ -7,10 +7,13 @@ class CondimentDecorator : public Beverage
 {
 public:
     CondimentDecorator();
-    CondimentDecorator(const Beverage *componemt, const string &description);
-    ~CondimentDecorator() = 0;
+    CondimentDecorator(Beverage *componemt);
+    virtual ~CondimentDecorator() = 0;
 
-    string getDescription();
+    CondimentDecorator& operator =(const CondimentDecorator &other);
+
+    string getDescription() const;
+    double cost();
 
 private:
     Beverage *component;
@@ -18,45 +21,53 @@ private:
 
 class Milk : public CondimentDecorator
 {
+private:
+    Milk():CondimentDecorator() {}
+
 public:
-    Milk();
-    Milk(const Beverage *componemt, const string &description);
+    Milk(Beverage *componemt);
     ~Milk();
 
-    string getDescription();
+    string getDescription() const;
     double cost();
 };
 
 class Mocha : public CondimentDecorator
 {
+private:
+    Mocha():CondimentDecorator() {}
+
 public:
-    Mocha();
-    Mocha(const Beverage *componemt, const string &description);
+    Mocha(Beverage *componemt);
     ~Mocha();
 
-    string getDescription();
+    string getDescription() const;
     double cost();
 };
 
 class Soy : public CondimentDecorator
 {
+private:
+    Soy():CondimentDecorator() {}
+
 public:
-    Soy();
-    Soy(const Beverage *componemt, const string &description);
+    Soy(Beverage *componemt);
     ~Soy();
 
-    string getDescription();
+    string getDescription() const;
     double cost();
 };
 
 class Whip : public CondimentDecorator
 {
+private:
+    Whip():CondimentDecorator() {}
+
 public:
-    Whip();
-    Whip(const Beverage *componemt, const string &description);
+    Whip(Beverage *componemt);
     ~Whip();
 
-    string getDescription();
+    string getDescription() const;
     double cost();
 };
 
