@@ -17,3 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     gof.cpp \
     hf.cpp
+
+HEADERS += \
+    vlist.h \
+    iterator.h \
+    alist.h
