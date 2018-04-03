@@ -6,13 +6,13 @@
 
 
 // extern declaration
-extern void normalPrint(Iterator<int> *itr);
+extern void normalPrint(Iterator<int> &itr);
 
 
 int main(int argc, char *argv[])
 {
     // Design Patterns by GOF
-    Iterator<int> *it;
+    //Iterator<int> *it;
 
     VList<int> vlist;
     AList<int> alist;
@@ -25,21 +25,23 @@ int main(int argc, char *argv[])
     vlist.push(30);
     vlist.push(40);
 
-    it = new VListIterator<int>(vlist);
+    //it = new VListIterator<int>(vlist);
+    VListIterator<int> vit(vlist);
 
-    normalPrint(it);
-    delete it;
-    it = NULL;
+    normalPrint(vit);
+    //delete it;
+    //it = NULL;
 
     alist.push(100);
     alist.push(200);
     alist.push(300);
     alist.push(400);
 
-    it = new AListIterator<int>(alist);
-    normalPrint(it);
-    delete it;
-    it = NULL;
+    //it = new AListIterator<int>(alist);
+    AListIterator<int> ait(alist);
+    normalPrint(ait);
+    //delete it;
+    //it = NULL;
 
     /*it = new MListIterator(vlist);
     normalPrint(mitr);

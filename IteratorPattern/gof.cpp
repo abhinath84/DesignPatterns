@@ -4,9 +4,9 @@
 
 
 
-void normalPrint(Iterator<int> *itr)
+void normalPrint(Iterator<int> &itr)
 {
     std::cout << "Print : " << std::endl;
-    for(itr->First(); !itr->IsDone(); itr->Next())
-        std::cout << itr->CurrentItem() << std::endl;
+    for(itr.First(); !itr.IsDone(); itr.Next())
+        std::cout << itr.CurrentItem() << std::endl;
 }

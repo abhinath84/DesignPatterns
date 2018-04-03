@@ -42,7 +42,15 @@ public:
     virtual void First()                { inx = 0; }
     virtual void Next()                 { ++inx; }
     virtual bool IsDone() const         { return( inx >= list->size() ); }
-    virtual T CurrentItem() const       { return( list->get(inx) ); }
+    virtual T CurrentItem() const
+    {
+        /*if (IsDone())
+        {
+            throw IteratorOutOfBounds;
+        }*/
+
+        return( list->get(inx) );
+    }
 
 private:
     const VList<T>  *list;
@@ -64,7 +72,15 @@ public:
     virtual void First()                { inx = 0; }
     virtual void Next()                 { ++inx; }
     virtual bool IsDone() const         { return( inx >= list->size() ); }
-    virtual T CurrentItem() const       { return( list->get(inx) ); }
+    virtual T CurrentItem() const
+    {
+        /*if (IsDone())
+        {
+            throw IteratorOutOfBounds;
+        }*/
+
+        return( list->get(inx) );
+    }
 
 private:
     const AList<T>  *list;
