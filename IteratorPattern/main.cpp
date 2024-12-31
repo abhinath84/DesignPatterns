@@ -1,14 +1,52 @@
 #include <iostream>
 
+#include "vlist.h"
+#include "alist.h"
+#include "iterator.h"
+
 
 // extern declaration
-extern void print(Iterator itr);
+extern void normalPrint(Iterator<int> &itr);
 
 
 int main(int argc, char *argv[])
 {
     // Design Patterns by GOF
-    //print(Iterator itr);
+    //Iterator<int> *it;
+
+    VList<int> vlist;
+    AList<int> alist;
+    /*AList alist;
+    MList mlist;*/
+
+
+    vlist.push(10);
+    vlist.push(20);
+    vlist.push(30);
+    vlist.push(40);
+
+    //it = new VListIterator<int>(vlist);
+    VListIterator<int> vit(vlist);
+
+    normalPrint(vit);
+    //delete it;
+    //it = NULL;
+
+    alist.push(100);
+    alist.push(200);
+    alist.push(300);
+    alist.push(400);
+
+    //it = new AListIterator<int>(alist);
+    AListIterator<int> ait(alist);
+    normalPrint(ait);
+    //delete it;
+    //it = NULL;
+
+    /*it = new MListIterator(vlist);
+    normalPrint(mitr);
+    delete it;
+    it = NULL;*/
 
     // HeadFirst Design Pattern
 
