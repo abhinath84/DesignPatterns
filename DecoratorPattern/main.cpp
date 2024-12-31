@@ -40,6 +40,15 @@ int main()
                                             new Mocha(
                                                 new HouseBlend()))));
 
+    // create using factory method
+    std::unique_ptr<Beverage> expresso = createBeverage<Espresso>();
+    cout << *espresso << endl;
+
+    std::unique_ptr<Beverage> houseBlendWithSoyMocha = createBeverage<Whip>(new Soy(
+                                                                                new Mocha(
+                                                                                    new Decaf())));
+    cout << *houseBlendWithSoyMocha << endl;
+
     return 0;
 }
 

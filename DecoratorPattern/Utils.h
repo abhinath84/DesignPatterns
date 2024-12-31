@@ -39,9 +39,14 @@ inline void printBeverage(T&& beverage)
 }
 
 // // create a templated factory of Beverage
-// template<typename T>
-// std::unique_ptr<T> createBeverage(std::unique_ptr<T> component)
-// {
-// }
+template<typename T, typename... Args,
+    typename = std::enable_if_t<
+        std::is_base_of_v<Beverage, T>
+    >
+>
+std::unique_ptr<Beverage> createBeverage(Args&&... args)
+{
+    return (std::make_unique<T>(std::forward<Args>(args)...));
+}
 
 #endif // UTILS_H
