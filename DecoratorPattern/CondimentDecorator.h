@@ -10,10 +10,11 @@ public:
     CondimentDecorator(Beverage *componemt);
     virtual ~CondimentDecorator() = 0;
 
-    CondimentDecorator& operator =(const CondimentDecorator &other);
+    CondimentDecorator(const CondimentDecorator&) = delete;
+    CondimentDecorator& operator =(const CondimentDecorator&) = delete;
 
     string getDescription() const;
-    double cost();
+    double cost() const;
 
 private:
     Beverage *component;
@@ -29,7 +30,7 @@ public:
     ~Milk();
 
     string getDescription() const;
-    double cost();
+    double cost() const;
 };
 
 class Mocha : public CondimentDecorator
@@ -42,7 +43,7 @@ public:
     ~Mocha();
 
     string getDescription() const;
-    double cost();
+    double cost() const;
 };
 
 class Soy : public CondimentDecorator
@@ -55,7 +56,7 @@ public:
     ~Soy();
 
     string getDescription() const;
-    double cost();
+    double cost() const;
 };
 
 class Whip : public CondimentDecorator
@@ -68,7 +69,7 @@ public:
     ~Whip();
 
     string getDescription() const;
-    double cost();
+    double cost() const;
 };
 
 #endif // CONDIMENTDECORATOR_H

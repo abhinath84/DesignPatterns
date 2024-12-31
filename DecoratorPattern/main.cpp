@@ -1,43 +1,49 @@
 #include <iostream>
+#include <memory>
 
+#include "Utils.h"
 #include "CondimentDecorator.h"
 
+using std::cout;
+using std::endl;
 
-void printBeverage(Beverage *beverage);
+// void printBeverage(const std::shared_ptr<Beverage> &beverage);
 
 int main()
 {
+    // only expresso
     Beverage *espresso = new Espresso();
+    cout << *espresso << endl;
 
-    std::cout << espresso->getDescription().c_str()
-              << " $" <<espresso->cost() << std::endl;
-
+    // dark roast with mocha, mocha, whip
     Beverage *darkroastwithcondiment = new DarkRoast();
     darkroastwithcondiment = new Mocha(darkroastwithcondiment);
     darkroastwithcondiment = new Mocha(darkroastwithcondiment);
     darkroastwithcondiment = new Whip(darkroastwithcondiment);
 
-    std::cout << darkroastwithcondiment->getDescription().c_str()
-              << " $" <<darkroastwithcondiment->cost() << std::endl;
+    cout << *darkroastwithcondiment << endl;
 
+    // house blend with soy, mocha, whip
     Beverage *houseblendwithcondiment = new HouseBlend();
     houseblendwithcondiment = new Soy(houseblendwithcondiment);
     houseblendwithcondiment = new Mocha(houseblendwithcondiment);
     houseblendwithcondiment = new Whip(houseblendwithcondiment);
 
-    std::cout << houseblendwithcondiment->getDescription().c_str()
-              << " $" <<houseblendwithcondiment->cost() << std::endl;
+    cout << *houseblendwithcondiment << endl;
 
+    // house blend with mocha, mocha, whip
     Beverage *houseblend = new HouseBlend();
-    printBeverage(new Whip(
-                      new Mocha(
-                          new Mocha(houseblend))));
+    std::shared_ptr<Beverage> ptr = std::make_shared<Whip>(new Mocha(
+                                                            new Mocha(houseblend)));
+    printBeverage(ptr);
+    printBeverage(std::make_shared<Whip>(new Mocha(
+                                            new Mocha(
+                                                new HouseBlend()))));
 
     return 0;
 }
 
-void printBeverage(Beverage *beverage)
-{
-    std::cout << beverage->getDescription().c_str()
-              << " $" <<beverage->cost() << std::endl;
-}
+// void printBeverage(std::shared_ptr<Beverage> const& beverage)
+// {
+//     cout << *beverage << endl;
+// }

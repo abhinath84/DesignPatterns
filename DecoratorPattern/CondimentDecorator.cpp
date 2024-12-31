@@ -17,22 +17,22 @@ CondimentDecorator::~CondimentDecorator()
         delete component;
 }
 
-CondimentDecorator& CondimentDecorator::operator =(const CondimentDecorator &other)
-{
-    if(this != &other)
-    {
-        component = other.component;
-    }
+// CondimentDecorator& CondimentDecorator::operator =(const CondimentDecorator &other)
+// {
+//     if(this != &other)
+//     {
+//         component = other.component;
+//     }
 
-    return(*this);
-}
+//     return(*this);
+// }
 
 string CondimentDecorator::getDescription() const
 {
     return(component->getDescription());
 }
 
-double CondimentDecorator::cost()
+double CondimentDecorator::cost() const
 {
     return(component->cost());
 }
@@ -52,7 +52,7 @@ string Milk::getDescription() const
     return(CondimentDecorator::getDescription() + ", Milk");
 }
 
-double Milk::cost()
+double Milk::cost() const
 {
     return(CondimentDecorator::cost() + .10);
 }
@@ -71,7 +71,7 @@ string Mocha::getDescription() const
     return(CondimentDecorator::getDescription() + ", Mocha");
 }
 
-double Mocha::cost()
+double Mocha::cost() const
 {
     return(CondimentDecorator::cost() + .20);
 }
@@ -90,7 +90,7 @@ string Soy::getDescription() const
     return(CondimentDecorator::getDescription() + ", Soy");
 }
 
-double Soy::cost()
+double Soy::cost() const
 {
     return(CondimentDecorator::cost() + .15);
 }
@@ -109,7 +109,7 @@ string Whip::getDescription() const
     return(CondimentDecorator::getDescription() + ", Whip");
 }
 
-double Whip::cost()
+double Whip::cost() const
 {
     return(CondimentDecorator::cost() + .10);
 }

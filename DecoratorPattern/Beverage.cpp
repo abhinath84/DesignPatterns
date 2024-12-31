@@ -5,23 +5,29 @@ Beverage::Beverage()
 {
 }
 
-Beverage::Beverage(const Beverage &other)
-    :description(other.description)
-{
-}
-
 Beverage::~Beverage()
 {
 }
 
-Beverage& Beverage::operator=(const Beverage &other)
-{
-    if(this != &other)
-    {
-        description = other.description;
-    }
+// Beverage::Beverage(const Beverage &other)
+//     :description(other.description)
+// {
+// }
 
-    return(*this);
+// Beverage& Beverage::operator=(const Beverage &other)
+// {
+//     if(this != &other)
+//     {
+//         description = other.description;
+//     }
+
+//     return(*this);
+// }
+
+ostream& operator<<(ostream& os, const Beverage& beverage)
+{
+    os << beverage.getDescription().c_str() << " : $" <<beverage.cost();
+    return (os);
 }
 
 void Beverage::setDescription(const string &description)
@@ -35,7 +41,7 @@ string Beverage::getDescription() const
     return (description);
 }
 
-double Beverage::cost()
+double Beverage::cost() const
 {
     return(0.00);
 }
@@ -47,7 +53,7 @@ HouseBlend::HouseBlend()
     setDescription("House Blend Coffee");
 }
 
-double HouseBlend::cost()
+double HouseBlend::cost() const
 {
     return(.89);
 }
@@ -58,7 +64,7 @@ DarkRoast::DarkRoast()
     setDescription("Dark Roast Coffee");
 }
 
-double DarkRoast::cost()
+double DarkRoast::cost() const
 {
     return(.99);
 }
@@ -69,7 +75,7 @@ Espresso::Espresso()
     setDescription("Espresso Coffee");
 }
 
-double Espresso::cost()
+double Espresso::cost() const
 {
     return(1.99);
 }
@@ -80,7 +86,7 @@ Decaf::Decaf()
     setDescription("Decaf Coffee");
 }
 
-double Decaf::cost()
+double Decaf::cost() const
 {
     return(1.05);
 }
